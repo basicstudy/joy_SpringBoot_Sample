@@ -1,0 +1,38 @@
+spring:
+  datasource:
+    hikari:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:3306/study?serverTimezone=UTC&useSSL=false
+      username: root
+      password: rmarh01!
+      connection-test-query: select 1
+      minimum-idle: 5
+      maximum-pool-size: 20
+      pool-name: SpringBootHikari
+      idle-timeout: 10000
+      max-lifetime: 196000
+      connection-timeout: 10000
+      validation-timeout: 10000
+      type: com.zaxxer.hikari.HikariDataSource
+    servlet:
+      multipart:
+        enabled: true
+        max-file-size: 100MB
+        max-request-size: 150MB
+    thymeleaf:
+    view-names: html/*
+    prefix: classpath:/templates/
+    suffix: .html
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+server:
+    servletPath: /*
+    contextPath: /
+    error:
+      whitelabel:
+        enabled: true # 브라우저 요청에 대해 서버 오류시 기본으로 노출할 페이지를 사용할지 여부 (TRUE, FALSE)
+    port: 8080
+mybatis:
+  configuration:
+      map-underscore-to-camel-case: true
